@@ -307,10 +307,10 @@ set_metadata("/system/vendor/lib/mediadrm/libdrmclearkeyplugin.so", "uid", 0, "g
 set_metadata("/system/vendor/lib/mediadrm/libwvdrmengine.so", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/vendor/media", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 #--KERNEL <remove un-needed lines> <modify variants without dashes/no SM- prefix>
-#Model1 eg. J530F
+#Model1 eg. J530F  <--mofify boot.img location /dev/block... to your device location-->
 if is_substring("J530F", getprop("ro.boot.bootloader")) then
         ui_print("-- Flashing stock J530F kernel image");
-        package_extract_file("kernel/J530F.img", "/dev/block/platform/13540000.dwmmc0/by-name/BOOT"); <modify to match your device boot.img location>
+        package_extract_file("kernel/J530F.img", "/dev/block/platform/13540000.dwmmc0/by-name/BOOT"); 
 endif;
 #Model2 eg. J530G
 if is_substring("J530G", getprop("ro.boot.bootloader")) then
