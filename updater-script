@@ -306,11 +306,11 @@ set_metadata("/system/vendor/lib/egl", "uid", 0, "gid", 2000, "mode", 0755, "cap
 set_metadata("/system/vendor/lib/mediadrm/libdrmclearkeyplugin.so", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/vendor/lib/mediadrm/libwvdrmengine.so", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/vendor/media", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
-#--KERNEL <remove un-needed lines>
+#--KERNEL <remove un-needed lines> <modify variants without dashes/no SM- prefix>
 #Model1 eg. J530F
 if is_substring("J530F", getprop("ro.boot.bootloader")) then
         ui_print("-- Flashing stock J530F kernel image");
-        package_extract_file("kernel/J530F.img", "/dev/block/platform/13540000.dwmmc0/by-name/BOOT");
+        package_extract_file("kernel/J530F.img", "/dev/block/platform/13540000.dwmmc0/by-name/BOOT"); <modify to match your device boot.img location>
 endif;
 #Model2 eg. J530G
 if is_substring("J530G", getprop("ro.boot.bootloader")) then
@@ -352,7 +352,7 @@ if is_substring("J530GM", getprop("ro.boot.bootloader")) then
         ui_print("-- Flashing stock J530GM kernel image");
         package_extract_file("kernel/J530FM.img", "/dev/block/platform/13540000.dwmmc0/by-name/BOOT");	
 endif;
-#--CUSTOM SCRIPTS
+#--CUSTOM SCRIPTS <--magisk install script-->
 ui_print("-- Installing Magisk V16.4");
 package_extract_dir("magisk", "/tmp/magisk");
 run_program("/sbin/busybox", "unzip", "/tmp/magisk/Magisk-v16.4.zip", "META-INF/com/google/android/*", "-d", "/tmp/magisk");
@@ -360,4 +360,4 @@ run_program("/sbin/busybox", "sh", "/tmp/magisk/META-INF/com/google/android/upda
 delete_recursive("/tmp/magisk");
 #--FINISH
 ui_print("-- Finishing installation");
-ui_print("INSTALLING INISHED"); ui_print(" "); 
+ui_print("INSTALLING <rom name> FINISHED"); ui_print(" "); 
