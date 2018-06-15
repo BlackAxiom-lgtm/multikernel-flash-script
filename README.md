@@ -1,4 +1,4 @@
-Multi kernel flash script
+Multi kernel flash script [EXPERIMENTAL]
 
 allows flashing to multiple variants in single zip file. Ideal for samsung devices.
 
